@@ -1,11 +1,13 @@
 var words = ["ground", "control", "to", "major", "tom"];
 
-function mapCreator(array) {
-  var output = [];
-  array.forEach( function (word) {
-    output.push(word.length);
-  })
-  return output;
+var map = function (array, wordCounter) {
+  var newMap = [];
+  array.forEach( function(word){ newMap.push(wordCounter(word)) });
+  return newMap;
 }
-console.log(mapCreator(words));
+
+console.log(map(words, function(word) {
+  return word.length;
+}) );
+
 // Expected output: [6, 7, 2, 5, 3]
